@@ -24,7 +24,7 @@ python app.py
 >This has been deployed but is not working due to some server load issue but will work in localhost
 
 ## Deployment
-The deployment of these apps has been done through [Heroku](https://signup.heroku.com/?c=7013A000000ib1xQAA&gclid=CjwKCAiA45njBRBwEiwASnZT5zB0BVGD6Y2OAPoLZpdVsn3tqrPG5Bop1k6u9Ooxst7c9dUG3ae0lhoCkx8QAvD_BwE)
+The deployment of these apps has been done through [Heroku](https://signup.heroku.com/?c=7013A000000ib1xQAA&gclid=CjwKCAiA45njBRBwEiwASnZT5zB0BVGD6Y2OAPoLZpdVsn3tqrPG5Bop1k6u9Ooxst7c9dUG3ae0lhoCkx8QAvD_BwE)<br>
 The database was stored using [Mlab](https://mlab.com/)
 
 # Movie Lens Dataset Description
