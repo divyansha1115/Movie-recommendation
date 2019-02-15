@@ -70,8 +70,8 @@ def predict():
 		#     for i in range(len(movieId)):
 		#     	newFileWriter.writerow([userId,movieId[i],ratings[i],'not_def'])
 
-		df2 = pd.read_csv("ml-latest-small/PREIIITDmovies.csv")
-		df3 = pd.read_csv("ml-latest-small/PreIIITDratings.csv")
+		df2 = pd.read_csv("ml-latest-small/moviesf.csv")
+		df3 = pd.read_csv("ml-latest-small/ratingsf.csv")
 		df3 = df3.drop(df3.columns[0], axis=1)
 		df2 = df2.drop(df2.columns[0], axis=1)
 
@@ -97,19 +97,11 @@ def predict():
 		    # Checking for number of ratings in common
 		    if number_of_ratings == 0:
 		        return 0
-
-		    # Add up all the preferences of each user
 		    userId1_preferences_sum = sum([user_movie[userId1][movie] for movie in both_rated])
 		    userId2_preferences_sum = sum([user_movie[userId2][movie] for movie in both_rated])
-
-		    # Sum up the squares of preferences of each user
 		    userId1_square_preferences_sum = sum([pow(user_movie[userId1][movie],2) for movie in both_rated])
 		    userId2_square_preferences_sum = sum([pow(user_movie[userId2][movie],2) for movie in both_rated])
-
-		    # Sum up the product value of both preferences for each movie
 		    product_sum_of_both_users = sum([user_movie[userId1][movie] * user_movie[userId2][movie] for movie in both_rated])
-
-		    # Calculate the pearson score
 		    numerator = product_sum_of_both_users - (userId1_preferences_sum*userId2_preferences_sum/number_of_ratings)
 		    denominator = sqrt((userId1_square_preferences_sum - pow(userId1_preferences_sum,2)/number_of_ratings) * (userId2_square_preferences_sum -pow(userId2_preferences_sum,2)/number_of_ratings))
 		    if denominator == 0:
@@ -123,41 +115,27 @@ def predict():
 	    
 		def user_reommendations(user):
 
-		    # Gets recommendations for a user by using a weighted average of every other user's rankings
 		    totals = {}
 		    simSums = {}
 		    rankings_list =[]
 		    for other in user_movie:
-		        # don't compare me to myself
 		        if other == user:
 		            continue
 		        similarity = pearson_correlation(user,other)
-		        
-
-		        # ignore scores of zero or lower
 		        if similarity <=0: 
 		            continue
 		        for movie in user_movie[other]:
-
-		            # only score movies i haven't seen yet
 		            if movie not in user_movie[user] or user_movie[user][movie] == 0:
-
-		            # Similrity * score
 		                totals.setdefault(movie,0)
 		                totals[movie] += user_movie[other][movie]* similarity
 		                # sum of similarities
 		                simSums.setdefault(movie,0)
 		                simSums[movie]+= similarity
-
-		        # Create the normalized list
-
 		    rankings = [(total/simSums[movie],movie) for movie,total in totals.items()]
 		    rankings.sort()
 		    rankings.reverse()
-		    # returns the recommended movies
 		    recommendataions_list = [recommend_movie for score,recommend_movie in rankings]
 		    return recommendataions_list[:10] 
-
 		df = pd.merge(df3, df2, on='movieId')
 		df1 = df[['userId','title','rating']]
 		dict1 =df1.groupby('userId')[['title','rating']].apply(lambda g: g.values.tolist()).to_dict()
