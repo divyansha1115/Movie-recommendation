@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Result</title>
+	<link  type="text/css"  href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+  table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+	<div class="jumbotron">
+<h1>Results</h1>
+</div>
+		<table class="table table-hover">
+			<tr>
+		      <th>Movie</th>
+		      <th>Synopsis</th>
+		      <th>Imdb rating</th>
+		    </tr>
+		         {% for value in title%}
+		            <tr>
+		               <td> 
+		               	<div>{{ value }}</div>
+		               	<div><img src="{{ url_for('static', filename='img/RxAI.png') }} " class="img-rounded" alt="Cinque Terre" style="display:block;" width="50%" height="50%""></div>
+		               </td>
+		               <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
+		               <td>9</td>
+
+		            </tr>
+         {% endfor %}
+      </table>
+      <!-- <table border = 1>
+		         {% for value in ratings%}
+		            <tr>
+		               <td> {{ value }} </td>
+		            </tr>
+         {% endfor %}
+      </table> -->
+</body>
+</html>
