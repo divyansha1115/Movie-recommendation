@@ -1,5 +1,5 @@
 # Movie-recommendation
-The data set have been taken from movieLens(http://files.grouplens.org/datasets/movielens/ml-latest-small.zip) and the movie information was extracted from IBMD.
+The data set have been taken from movieLens(http://files.grouplens.org/datasets/movielens/ml-latest-small.zip) and the movie information was extracted from IMDB.
 
 ## Getting Started
 cd into any of the heroku directories
