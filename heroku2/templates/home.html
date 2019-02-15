@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOME</title>
+  <!-- Latest compiled and minified CSS -->
+<link  type="text/css"  href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+  table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+</style>
+</head>
+<body>
+
+  <div class="jumbotron">
+<h1>MOVIE RECOMMENDATION</h1>
+<p>Enter the ratings of the movies shown below ranging from 1-5.<br>If you have not seen the movie just leave it blank.<br> Rate minimum 5 movies. For a new set of movies refresh the page</p>
+</div>
+
+
+<!-- <form method="POST" action="/predict" >
+	
+slect any of the movie
+	 
+  <select name="movie" size="10">
+  	{% for key in title %}
+    <option value= "{{key.movieId}}" >{{key.title}} </option>
+    <option value= "{{key.movieId}}" >{{key.movieId}}</option>
+    {% endfor %}
+  </select>
+  <div><input type="submit"></div>
+</form> -->
+
+<form method="POST" action="/predict">
+  <table class="table table-hover">
+    <tr>
+      <th>Movie</th>
+      <th>Synopsis</th>
+      <th>Rating(0-5)</th>
+    </tr>
+	{% for key in title %}
+  
+    <tr>
+    <td>
+      <div>{{key.Title}}</div>
+      <div><img src={{key.Thumbnail}} class="img-rounded" alt="Not Available" style="display:block;" width="50%" height="50%"></div>
+    </td>
+    <td>{{key.Summary}}</td>
+    <td><Input type="text" name = "{{key.Title}}}"  class="rating" class="form-control"></td>
+    </tr>
+  
+    
+    {% endfor %}
+    </table>
+  <br><br>
+   <center><input type="submit" class = "btn btn-primary btn-lg" style="margin-bottom: 100px;" value="Get Recommendation"></center> 
+</form>
+  	
+  
+
+
+
+</body>

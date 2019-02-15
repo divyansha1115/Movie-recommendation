@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOME</title>
+</head>
+<body>
+MOVIE RECOMMENDATION
+<!-- <form method="POST" action="/predict" >
+	
+slect any of the movie
+	 
+  <select name="movie" size="10">
+  	{% for key in title %}
+    <option value= "{{key.movieId}}" >{{key.title}} </option>
+    <option value= "{{key.movieId}}" >{{key.movieId}}</option>
+    {% endfor %}
+  </select>
+  <div><input type="submit"></div>
+</form> -->
+
+<form method="POST" action="/predict">
+	{% for key in title %}
+    <div>{{key.title}}<Input type="text" name = "{{key.movieId}}}"  class="rating"></div>
+    {% endfor %}
+  <br><br>
+   <input type="submit">
+</form>
+  	
+  
+<script type="text/javascript">
+
+document.getElementsByClassName("rating").value = '2.5';
+
+</script>
+
+
+</body>

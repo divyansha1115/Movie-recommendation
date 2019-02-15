@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Result</title>
+	<link  type="text/css"  href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+  table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+	<div class="jumbotron">
+<h1>Results</h1>
+</div>
+		<table class="table table-hover">
+			<tr>
+		      <th>Movie</th>
+		      <th>Synopsis</th>
+		      <th>Imdb rating</th>
+		    </tr>
+		         {% for value in title%}
+		            <tr>
+		               <td> 
+		               	<div>{{value.Title}}</div>
+		               	<div><img src={{value.Thumbnail}} class="img-rounded" alt="Not Available" style="display:block;" width="50%" height="50%"></div>
+		               </td>
+		               <td>{{value.Summary}}</td>
+		               <td>{{value.Rating}}</td>
+
+		            </tr>
+         {% endfor %}
+      </table>
+      <!-- <table border = 1>
+		         {% for value in ratings%}
+		            <tr>
+		               <td> {{ value }} </td>
+		            </tr>
+         {% endfor %}
+      </table> -->
+</body>
+</html>
