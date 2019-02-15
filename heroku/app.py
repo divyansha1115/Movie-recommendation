@@ -72,8 +72,8 @@ def predict():
 	#     for i in range(len(movieId)):
 	#     	newFileWriter.writerow([userId,movieId[i],ratings[i],'not_def'])
 
-	df2 = pd.read_csv("ml-latest-small/PREIIITDmovies.csv")
-	df3 = pd.read_csv("ml-latest-small/PreIIITDratings.csv")
+	df2 = pd.read_csv("ml-latest-small/moviesf.csv")
+	df3 = pd.read_csv("ml-latest-small/ratingsf.csv")
 	df3 = df3.drop(df3.columns[0], axis=1)
 	df2 = df2.drop(df2.columns[0], axis=1)
 
